@@ -1,0 +1,12 @@
+.movieItem {
+    padding: 0 2px;
+    transition: 250ms;
+}
+
+.movieItem:hover{
+    transform: scale(1.3);
+    animation-delay: 2s;
+    position: absolute;
+    z-index: 99;
+    bottom:0;
+}
