@@ -19,7 +19,7 @@ function App() {
       <AuthContextProvider>
       <Navbar/>
       <Routes>
-        <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+        <Route path='/NetflixbyNathan' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
         <Route path='/login' element={<ProtectedRoute2><Login/></ProtectedRoute2>}/>
         <Route path='/signup' element={<ProtectedRoute2><SignUp/></ProtectedRoute2>}/>
         <Route path='/account' element={<ProtectedRoute><Account/></ProtectedRoute>}/> 

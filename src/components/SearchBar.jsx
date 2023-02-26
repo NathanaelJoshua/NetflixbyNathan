@@ -45,7 +45,7 @@ const navigate = useNavigate();
     setIsActive(false);
     setSearchResult('');
     setSearchValue('');
-    navigate('/');
+    navigate('/NetflixbyNathan');
   }
 
   const handleBlur = event => {
