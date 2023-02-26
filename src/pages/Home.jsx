@@ -36,8 +36,8 @@ const Row = [
 const MainObject = [
   {
     id:60574,
-    logoImage : './images/PeakyBlinders.png', 
-    videosUrl: './videos/PeakyBlinders.mp4',
+    logoImage : './NetflixbyNathan/images/PeakyBlinders.png', 
+    videosUrl: './NetflixbyNathan/videos/PeakyBlinders.mp4',
     api: request.requestTvById,
     type: 'netflixSeries'
   }

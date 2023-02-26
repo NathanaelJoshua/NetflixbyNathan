@@ -79,7 +79,7 @@ export const Main = (props) => {
                         
                         <div className=' lg:w-[80%] md:w-[85%] xs:w-[90%] mb-5 duration-500'>
                             {type === 'netflixSeries' ? 
-                            <img  className='h-10' src="./images/NetflixSeries.png" alt="NetflixSeriesLogo"/>
+                            <img  className='h-10' src="./NetflixbyNathan/images/NetflixSeries.png" alt="NetflixSeriesLogo"/>
                             : <div></div> }
                             <img  className='h-20' src={LogoImage} alt={movie.title}/>
                         </div>

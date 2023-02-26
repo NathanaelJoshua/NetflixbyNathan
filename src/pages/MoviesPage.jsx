@@ -34,8 +34,8 @@ const Row = [
 const MainObject = [
   {
     id:335787,
-    logoImage : './images/UnchartedLogo.png', 
-    videosUrl: './videos/Uncharted.mp4',
+    logoImage : './NetflixbyNathan/images/UnchartedLogo.png', 
+    videosUrl: './NetflixbyNathan/videos/Uncharted.mp4',
     api: request.requestMovieById
   }
 ]

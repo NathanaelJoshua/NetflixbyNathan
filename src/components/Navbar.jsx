@@ -73,7 +73,7 @@ const Navbar = () => {
                   </div>
                 </div>
                 <Link to='/' className='pr-5'> 
-                  <img  className='h-8' src="./images/Logo.png"/>
+                  <img  className='h-8' src="./NetflixbyNathan/images/Logo.png"/>
                 </Link>
                 <div className='md:flex hidden'>
                   <div className='text-white px-5'>
@@ -114,7 +114,7 @@ const Navbar = () => {
                     <a>
                       <div className='flex items-center'>
                         <div className='bg-slate-400 w-8 h-8 mx-1 rounded-md'>
-                            <img  className='rounded-md w-full h-full' src="./images/MoneyHeistpp.png"/>
+                            <img  className='rounded-md w-full h-full' src="./NetflixbyNathan/images/MoneyHeistpp.png"/>
                         </div>
                         <IoMdArrowDropdown className='arrow'/>
                       </div>
@@ -175,7 +175,7 @@ const Navbar = () => {
         <div id="navMain" className='flex fixed items-center justify-start px-[50px] py-4 z-40 w-full from-black to-transparent'>
             <div className='flex'>
               <Link to='/' className='pr-5'> 
-                <img  className='h-8' src="./images/Logo.png"/>
+                <img  className='h-8' src="./NetflixbyNathan/images/Logo.png"/>
               </Link>
       
             </div>
