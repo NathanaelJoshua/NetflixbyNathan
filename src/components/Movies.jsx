@@ -51,7 +51,7 @@ export const Movies = (props) => {
         <img className='object-cover cursor-pointer rounded-sm' style={{width: movieWidth}} src={`https://image.tmdb.org/t/p/original/${image}`} alt={title}/>
         {onMovieHover === id ? 
           <MovieHover genre={genre} movie={props.movie} width={movieWidth} type={type} searchKey={props.searchKey} 
-          index={props.index} movieCount={props.movieCount} crntIndx={props.crntIndx}/>
+          index={props.index} movieCount={props.movieCount} crntIndx={props.crntIndx} closeHover={onLeaveHandler}/>
           :
           <div/>  
         }

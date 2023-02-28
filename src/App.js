@@ -23,16 +23,22 @@ function App() {
 
   const showModal = (id, type) => {
     setIsModalVisible(true);
+    document.body.style.overflow = 'hidden';
     setModalId(id);
     setModalType(type);
   };
+
+  const closeModal = () =>{
+    setIsModalVisible(false)
+    document.body.style.overflow = 'auto';
+  }
   return (
     <div className='App'>
       <AuthContextProvider>
       <ModalContext.Provider value={{ showModal }}>
-      <Navbar/>
+      <Navbar isModalVisible={isModalVisible}/>
       <Routes>
-        <Route path='/NetflixbyNathan' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+        <Route path='/Home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
         <Route path='/login' element={<ProtectedRoute2><Login/></ProtectedRoute2>}/>
         <Route path='/signup' element={<ProtectedRoute2><SignUp/></ProtectedRoute2>}/>
         <Route path='/account' element={<ProtectedRoute><Account/></ProtectedRoute>}/> 
@@ -42,7 +48,7 @@ function App() {
         <Route path='/mylist' element={<ProtectedRoute><MyList/></ProtectedRoute>}/> 
 
       </Routes> 
-      {isModalVisible && <ModalDetail id={modalId} type={modalType} onClose={() => setIsModalVisible(false)} />}
+      {isModalVisible && <ModalDetail id={modalId} type={modalType} onClose={closeModal } />}
       </ModalContext.Provider>
       </AuthContextProvider>
     </div>

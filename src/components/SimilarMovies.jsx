@@ -155,7 +155,7 @@ export const SimilarMovies = (props) => {
   return (
     <div className='rounded-md bg-[#2f2f2f] overflow-clip my-2 w-full '>
         <div className='relative'>
-            <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original/${image}`} alt={title}/>
+            <img className='w-full h-full object-cover' src={image ? `https://image.tmdb.org/t/p/original/${image}` : './NetflixbyNathan/images/ImageError.png'} alt={title}/>
             
             <div className='absolute bg-gradient-to-bl from-black via-transparent to-transparent w-full h-full top-0 right-0'>
                 <div className='text-white p-3 text-end'>

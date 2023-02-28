@@ -5,6 +5,7 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { HiOutlineSpeakerWave, HiOutlineSpeakerXMark } from "react-icons/hi2";
 import './Main.css'
 import ModalContext from '../context/ModalContext';
+import { Trailer } from './Trailer';
 
 export const Main = (props) => {
 
@@ -36,16 +37,7 @@ export const Main = (props) => {
     },[api]);
 
     const SoundHandler = () => {
-        const vid = document.getElementById('videoTrailer');
-        if(isSoundOn === true) 
-        {
-            vid.muted = true;
-            setSound(false);
-        }
-        else {
-            vid.muted = false;
-            setSound(true);
-        }
+        setSound(!isSoundOn);
     }
 
     const onHoverHandler=()=>{
@@ -121,14 +113,12 @@ export const Main = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className='w-full h-full'>
+                <div className='w-full h-full overflow-hidden'>
                 {onMovieHover === 0 ? 
                     <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title}/>
                     
                     : 
-                    <video id='videoTrailer'autoPlay loop className='w-full h-full object-cover'>
-                        <source src={videoUrl} type="video/mp4"></source>
-                    </video>}
+                    <Trailer movieId={movieId} width={'200%'} type={type} height={'200%'} muted={!isSoundOn}/> }
                 </div>
             </div>
         </div>

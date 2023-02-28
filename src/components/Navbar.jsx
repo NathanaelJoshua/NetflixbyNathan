@@ -10,7 +10,7 @@ import { TbHelp, TbMenu2 } from "react-icons/tb";
 import  './Navbar.css';
 
 
-const Navbar = () => {
+const Navbar = (props) => {
   const {user, logOut} = UserAuth();
   const [isScrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const Navbar = () => {
     <div>
 
     {user ? 
-          <div id="navMain" className={isScrolled  ? 'flex fixed items-center justify-between md:px-[50px] py-4 z-40 w-full bg-black' : 'flex fixed items-center justify-between md:px-[50px] py-4 z-40 w-full bg-gradient-to-b from-black to-transparent'}>
+          <div id="navMain" className={`${!props.isModalVisible && 'fixed'} flex  items-center justify-between md:px-[50px] py-4 z-40 w-full ${isScrolled ? 'bg-black' : 'bg-gradient-to-b from-black to-transparent'}`}>
               <div className='flex'>
                 <div className='md:hidden flex text-white items-center justify-center dropdown'>
                   <a className=' mx-4 '>
@@ -51,7 +51,7 @@ const Navbar = () => {
                   <div className='menuBurger'>
                       <a className='triBurger'/>
                       <div className='text-white px-2 flex text-start'>
-                        <Link to='/NetflixByNathan'>
+                        <Link to='/Home'>
                           Home
                         </Link>
                       </div>
@@ -72,12 +72,12 @@ const Navbar = () => {
                       </div>
                   </div>
                 </div>
-                <Link to='/NetflixByNathan' className='pr-5'> 
+                <Link to='/Home' className='pr-5'> 
                   <img  className='h-8' src="./NetflixbyNathan/images/Logo.png"/>
                 </Link>
                 <div className='md:flex hidden'>
                   <div className='text-white px-5'>
-                      <Link to='/NetflixByNathan'>
+                      <Link to='/Home'>
                         Home
                       </Link>
                   </div>
@@ -174,7 +174,7 @@ const Navbar = () => {
         :
         <div id="navMain" className='flex fixed items-center justify-start px-[50px] py-4 z-40 w-full from-black to-transparent'>
             <div className='flex'>
-              <Link to='/NetflixByNathan' className='pr-5'> 
+              <Link to='/Home' className='pr-5'> 
                 <img  className='h-8' src="./NetflixbyNathan/images/Logo.png"/>
               </Link>
       

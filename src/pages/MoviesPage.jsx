@@ -35,7 +35,6 @@ const MainObject = [
   {
     id:271110,
     logoImage : './NetflixbyNathan/images/CaptainAmerica3Logo.png', 
-    videosUrl: './NetflixbyNathan/videos/Uncharted.mp4',
     api: request.requestMovieById,
     type: 'movie'
   }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { arrayUnion, doc, onSnapshot, updateDoc } from 'firebase/firestore';
-import React, { createContext, useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {  FaPlay } from 'react-icons/fa';
 import { HiOutlineSpeakerWave, HiOutlineSpeakerXMark } from 'react-icons/hi2';
 import { SlArrowDown, SlArrowUp, SlLike } from 'react-icons/sl';
@@ -20,9 +20,12 @@ export const ModalDetail = (props) => {
     // UI status
     const [moviePlay, setMoviePlay] = useState(false);
     const [isExistInList, setExistInList] = useState(false);
-    const [isSoundOn, setSound] = useState(false);
+    const [isSoundOn, setSound] = useState(true);
     const [isLoad, setLoad] = useState(true);
     const [isSimilarMovieExpand, setSimilarMovieExpand] = useState(false);
+    const [show, setShow] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const scrollRef = useRef(null);
 
     // item parameter
     const id = props.id;
@@ -151,6 +154,9 @@ export const ModalDetail = (props) => {
         getItemData();
         getSimilarData();
         randomAge(13,20);
+
+        //open modal animation
+        setTimeout(()=> setShow(true),500);
         setLoad(false);
         handleMoviePlay();
     },[id])
@@ -161,6 +167,16 @@ export const ModalDetail = (props) => {
             if(userMovieList.some(obj => obj.item.id === id) ) setExistInList(true);
         }
     },[userMovieList])
+
+    useEffect(() => {
+        if (isScrolled) {
+          scrollRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+          setIsScrolled(false);
+        }
+      }, [isScrolled]);
 
     //button handler
     const SoundHandler = () => {
@@ -187,6 +203,11 @@ export const ModalDetail = (props) => {
         }
     }
 
+    const closeModalHandler = () => {
+        setShow(false);
+        setTimeout(()=> props.onClose(),500)
+    }
+
     // delete movie list on db
     const deleteMovieonDB = async (id) =>{
         try {
@@ -200,12 +221,13 @@ export const ModalDetail = (props) => {
         }
     }
     
+    
     if(isLoad){
         return ''
     }
   return (
     <div className="fixed z-100 left-0 top-0 w-full h-screen overflow-y-scroll overflow-x-hidden bg-black/70">
-        <div className="relative bg-[#141414] rounded-md sm:w-[90%] md:w-[80%] lg:w-[60%] mx-auto mt-[5%] overflow-clip animate-slideUp">
+        <div className={`relative bg-[#141414] rounded-md sm:w-[90%] md:w-[80%] lg:w-[60%] mx-auto mt-[5%] overflow-clip transition-all duration-500 ease-in-out ${show ? 'opacity-100' : 'opacity-0'}`}>
 
             {/* top */}
             <div className=' w-full h-[500px]'>
@@ -231,7 +253,7 @@ export const ModalDetail = (props) => {
                     </div>
 
                     <div className='text-white flex flex-col justify-between'>
-                        <div className='rounded-full mr-3 text-xl bg-black p-3 cursor-pointer h-max' onClick={props.onClose}>
+                        <div className='rounded-full mr-3 text-xl bg-black p-3 cursor-pointer h-max' onClick={closeModalHandler}>
                             <VscChromeClose/>
                         </div>
                         <div className='rounded-full mr-3 text-lg outline outline-2 outline-white p-3 cursor-pointer h-max' onClick={SoundHandler}>
@@ -245,10 +267,10 @@ export const ModalDetail = (props) => {
                     </div>
 
                 </div>
-                <div className='w-full h-full bg-[#141414]'>
+                <div className='w-full h-full bg-[#141414] overflow-hidden'>
                     {moviePlay ?
                     
-                    <Trailer movieId={id} width={'100%'} type={type} height={'500px'} muted={!isSoundOn}/> : 
+                    <Trailer movieId={id} width={'200%'} type={type} height={'200%'} muted={!isSoundOn}/> : 
                     <img className={!moviePlay ? 'w-full h-full object-cover opacity-100 transition duration-500': 'w-full h-[500px]object-cover opacity-0 transition duration-500 z-0'} src={`https://image.tmdb.org/t/p/original/${image}`} alt={title}/>
                     
                     }
@@ -289,7 +311,7 @@ export const ModalDetail = (props) => {
                                 {c.name},
                             </p>
                         ))}
-                        <p className='text-white cursor-pointer hover:underline italic'>
+                        <p className='text-white cursor-pointer hover:underline italic' onClick={() => setIsScrolled(true)}>
                             more
                         </p>
                     </div> 
@@ -337,7 +359,7 @@ export const ModalDetail = (props) => {
                 </div>
             </div>
 
-            <div className='p-10'>
+            <div className='p-10' ref={scrollRef}>
                 <div className='text-white text-2xl font-semibold text-start py-5'>
                     About {title}
                 </div>

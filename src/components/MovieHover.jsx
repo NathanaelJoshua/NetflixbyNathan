@@ -9,6 +9,8 @@ import { db } from '../firebase';
 import { UserAuth } from '../context/AuthContext';
 import axios from 'axios';
 import request from '../Request';
+import { useContext } from 'react';
+import ModalContext from '../context/ModalContext';
 
 export const MovieHover = (props) => {
     const [listMovie, setListMovie] = useState([]);
@@ -22,9 +24,10 @@ export const MovieHover = (props) => {
     const movieId = doc(db, 'users', `${user?.email}`);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [runtime, setRunTime] = useState();
-    const [modal, showModal] = useState(false);
     
     // item property
+    
+    const id = props.movie.id;
     const index = props.index;
     const currentIndex = props.crntIndx;
     const movieCount = props.movieCount;
@@ -33,11 +36,10 @@ export const MovieHover = (props) => {
     const type = props.type;
     const [genre, setGenre] = useState([])
     const movieWidth = props.width*multi;
-    let apiTvById = request.requestTvById;
-    let apiMovieById = request.requestMovieById;
     let apiItem = request.requestItemById;
-    
-    const id = props.movie.id;
+
+    //modal context
+    const { showModal } = useContext(ModalContext);
 
     useEffect(() => {
         const handleWindowResize = () => {
@@ -163,6 +165,11 @@ export const MovieHover = (props) => {
           }, 1500);
     }
 
+    const openModalHandler = () => {
+        props.closeHover();
+        showModal(id, type);
+    }
+
     useEffect(()=>{
         onSnapshot(doc(db, 'users',`${user?.email}`), (doc)=>{
             setListMovie(doc.data()?.savedShows);
@@ -258,7 +265,7 @@ export const MovieHover = (props) => {
                                 </div>
                                 </div>
                             <div className='flex'>
-                                <div onClick={()=> showModal(true)} className='flex justify-center items-center rounded-full outline outline-2 p-3 cursor-pointer hover:text-white text-gray-300'>
+                                <div onClick={openModalHandler} className='flex justify-center items-center rounded-full outline outline-2 p-3 cursor-pointer hover:text-white text-gray-300'>
                                     <BsChevronDown/>
                                 </div>
                             </div>

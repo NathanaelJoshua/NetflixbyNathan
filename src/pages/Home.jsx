@@ -37,7 +37,6 @@ const MainObject = [
   {
     id:60574,
     logoImage : './NetflixbyNathan/images/PeakyBlinders.png', 
-    videosUrl: './NetflixbyNathan/videos/PeakyBlinders.mp4',
     api: request.requestTvById,
     type: 'tv'
   }
