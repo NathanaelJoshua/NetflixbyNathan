@@ -30,7 +30,7 @@ export const SignUp = () => {
     {
         try {
             await signUp(email,password);
-            navigate('/');
+            navigate('/Home');
         } catch (error) {
             setError(error.message)
         }

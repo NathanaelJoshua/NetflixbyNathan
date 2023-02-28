@@ -31,7 +31,7 @@ export const Login = () => {
         {
             try {
                 await signIn(email,password)
-                navigate('/')
+                navigate('/Home')
             } catch (error) {
                 setError(error.message)
             }

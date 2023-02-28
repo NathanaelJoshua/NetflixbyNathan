@@ -63,7 +63,7 @@ export const MyList = () => {
     if(userMovieList){
       setLoad(false)
     }
-  },);
+  },[userMovieList]);
 
   if(isLoad){
     return '';

@@ -136,20 +136,20 @@ export const MovieHover = (props) => {
             await updateDoc(movieId, {
                 savedShows: arrayUnion({
                     type: type,
-                    movie: props.movie,
+                    item: props.movie,
                 })
             })
         }
         else{
             setListClick(false);
             setAnim(true)
-            deleteMovieonDB(props.movie.id);
+            deleteMovieonDB(id);
         }
     }
 
     const deleteMovieonDB = async (id) =>{
         try {
-            const result = listMovie.filter((item) => item.movie.id !== id)
+            const result = listMovie.filter((item) => item.item.id !== id)
             await updateDoc(movieId, {
                 savedShows: result
             })
@@ -225,7 +225,7 @@ export const MovieHover = (props) => {
 
 
     useEffect(()=>{
-        if(listMovie){
+        if(listMovie.length !== 0){
             if(listMovie.some(obj => obj.item.id === id) ) setListClick(true);
         }
     },[listMovie])

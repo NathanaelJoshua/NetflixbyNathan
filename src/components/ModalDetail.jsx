@@ -136,7 +136,7 @@ export const ModalDetail = (props) => {
 
             setTimeout(()=>{
                 setMoviePlay(false)
-            },22000)
+            },32000)
         }
         
         // random age

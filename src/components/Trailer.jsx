@@ -33,7 +33,6 @@ export const Trailer = (props) => {
         const getData = async () => {
           try {
             await axios.get(api).then((response)=>{
-              console.log(response.data.results)
               if(response.data.results.length === 0){
                   setKeyTrailer('57FeEHKai0g')
               }
