@@ -11,7 +11,10 @@ const request = {
     requestSearch: `https://api.themoviedb.org/3/search/multi?api_key=${key}&query=`,
     requestTrailer: `https://api.themoviedb.org/3/typeId/trailerId/videos?api_key=${key}`,
     requestMovieById: `https://api.themoviedb.org/3/movie/movieId?api_key=${key}&language=en-US`,
-    requestTvById: `https://api.themoviedb.org/3/tv/movieId?api_key=${key}&language=en-US`
+    requestTvById: `https://api.themoviedb.org/3/tv/movieId?api_key=${key}&language=en-US`,
+    requestCredit: `https://api.themoviedb.org/3/#type#/#id#/credits?api_key=${key}&language=en-US`,
+    requestItemById: `https://api.themoviedb.org/3/#type#/#id#?api_key=${key}&language=en-US`,
+    requestSimilar: `https://api.themoviedb.org/3/#type#/#id#/recommendations?api_key=${key}`
 };
 
 

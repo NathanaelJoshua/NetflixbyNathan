@@ -9,8 +9,9 @@ import { FaUndo } from "react-icons/fa";
 
 export const MyList = () => {
   
-  const [listMovie, setListMovie] = useState();
+  //user
   const {user} = UserAuth();
+  const [userMovieList, setUserMovieList] = useState();
   
   const [movieCount,setMovieCount] = useState(6);
   const [movieWidth, setMovieWidth] = useState(0);
@@ -20,7 +21,7 @@ export const MyList = () => {
 
   useEffect(() => {
     onSnapshot(doc(db, 'users',`${user?.email}`), (doc)=>{
-        setListMovie(doc.data()?.savedShows);
+        setUserMovieList(doc.data()?.savedShows);
     });
   },[user.email])
 
@@ -59,7 +60,7 @@ export const MyList = () => {
     }
     movieWidthFunction();
     
-    if(listMovie){
+    if(userMovieList){
       setLoad(false)
     }
   },);
@@ -72,11 +73,11 @@ export const MyList = () => {
         <div className='text-white py-10 text-start text-3xl font-normal'>
             My List
         </div>
-        {listMovie.length > 0 ? 
+        {userMovieList.length > 0 ? 
           <div className='flex flex-row flex-wrap'>
-            {listMovie.map((item,index) => (
+            {userMovieList.map((item,index) => (
               <div className='pb-[50px] relative' key={index}>
-                <Movies movie={item.movie} width={movieWidth} type={item.type} movieCount={movieCount} index={index} searchKey='1'/>
+                <Movies movie={item.item} width={movieWidth} type={item.type} movieCount={movieCount} index={index} searchKey='1'/>
               </div>
                 ))}
           </div>

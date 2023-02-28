@@ -28,7 +28,7 @@ const MainObject = [
     logoImage : './NetflixbyNathan/images/AliceLogo.png', 
     videosUrl: './NetflixbyNathan/videos/Alice.mp4',
     api: request.requestTvById,
-    type: 'netflixSeries'
+    type: 'tv'
   }
 ]
 

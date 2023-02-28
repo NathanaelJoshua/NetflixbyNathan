@@ -51,7 +51,7 @@ const Navbar = () => {
                   <div className='menuBurger'>
                       <a className='triBurger'/>
                       <div className='text-white px-2 flex text-start'>
-                        <Link to='/'>
+                        <Link to='/NetflixByNathan'>
                           Home
                         </Link>
                       </div>
@@ -72,12 +72,12 @@ const Navbar = () => {
                       </div>
                   </div>
                 </div>
-                <Link to='/' className='pr-5'> 
+                <Link to='/NetflixByNathan' className='pr-5'> 
                   <img  className='h-8' src="./NetflixbyNathan/images/Logo.png"/>
                 </Link>
                 <div className='md:flex hidden'>
                   <div className='text-white px-5'>
-                      <Link to='/'>
+                      <Link to='/NetflixByNathan'>
                         Home
                       </Link>
                   </div>
@@ -105,7 +105,7 @@ const Navbar = () => {
             
               <div className='text-white flex items-center'>
                   <SearchBar/>
-                  <div className='px-2'>
+                  <div className='px-2 cursor-pointer'>
                     <a>
                       <RiNotification2Line className='text-lg'/>
                     </a>
@@ -174,13 +174,10 @@ const Navbar = () => {
         :
         <div id="navMain" className='flex fixed items-center justify-start px-[50px] py-4 z-40 w-full from-black to-transparent'>
             <div className='flex'>
-              <Link to='/' className='pr-5'> 
+              <Link to='/NetflixByNathan' className='pr-5'> 
                 <img  className='h-8' src="./NetflixbyNathan/images/Logo.png"/>
               </Link>
       
-            </div>
-          
-            <div className='text-white flex items-center'>
             </div>
         </div>
         }

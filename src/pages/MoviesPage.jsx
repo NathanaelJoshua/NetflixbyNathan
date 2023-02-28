@@ -33,10 +33,11 @@ const Row = [
 
 const MainObject = [
   {
-    id:335787,
-    logoImage : './NetflixbyNathan/images/UnchartedLogo.png', 
+    id:271110,
+    logoImage : './NetflixbyNathan/images/CaptainAmerica3Logo.png', 
     videosUrl: './NetflixbyNathan/videos/Uncharted.mp4',
-    api: request.requestMovieById
+    api: request.requestMovieById,
+    type: 'movie'
   }
 ]
 
@@ -44,7 +45,7 @@ const MoviesPage = () => {
   return (
     <div className='relative'>
       {MainObject.map((item) => (
-        <Main id={item.id} logo={item.logoImage} video={item.videosUrl} key={item.id} api={item.api}/>
+        <Main id={item.id} logo={item.logoImage} video={item.videosUrl} key={item.id} api={item.api} type={item.type}/>
       ))}
       <div className='relative'>
         <div className='mt-[-200px]'>

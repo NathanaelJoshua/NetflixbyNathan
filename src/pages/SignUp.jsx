@@ -8,7 +8,7 @@ export const SignUp = () => {
   const [isEmailError, setEmailError] = useState(false);
   const [isPasswordError, setPasswordError] = useState(false);
   const [error,setError] = useState('');
-  const {user, signUp} = UserAuth();
+  const {signUp} = UserAuth();
   const navigate = useNavigate();
 
   const onSubmitHandler = async (e) =>{

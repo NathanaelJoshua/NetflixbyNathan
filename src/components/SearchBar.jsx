@@ -25,7 +25,6 @@ const navigate = useNavigate();
   useEffect(() =>{
     const queryParams = new URLSearchParams(window.location.search);
     const p = queryParams.get("q");
-    console.log(queryParams)
     if(p){
       setSearchValue(p);
       setIsActive(true);

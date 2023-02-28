@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaPlay } from 'react-icons/fa';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { HiOutlineSpeakerWave, HiOutlineSpeakerXMark } from "react-icons/hi2";
 import './Main.css'
+import ModalContext from '../context/ModalContext';
 
 export const Main = (props) => {
+
+    //modal context
+    const { showModal } = useContext(ModalContext);
     const LogoImage = props.logo;
     const videoUrl = props.video;
     const movieId = props.id;
@@ -63,6 +67,7 @@ export const Main = (props) => {
         }
         else return str;
     }
+
     if (isLoading) {
         return <div className="App">Loading...</div>;
     }
@@ -78,10 +83,10 @@ export const Main = (props) => {
                         :<div className=' duration-1000'/>}
                         
                         <div className=' lg:w-[80%] md:w-[85%] xs:w-[90%] mb-5 duration-500'>
-                            {type === 'netflixSeries' ? 
+                            {type === 'tv' ? 
                             <img  className='h-10' src="./NetflixbyNathan/images/NetflixSeries.png" alt="NetflixSeriesLogo"/>
                             : <div></div> }
-                            <img  className='h-20' src={LogoImage} alt={movie.title}/>
+                            <img  className='w-[500px]' src={LogoImage} alt={movie.title}/>
                         </div>
                         
                         {onMovieHover === 0 ? 
@@ -95,7 +100,7 @@ export const Main = (props) => {
                                 <FaPlay /> 
                                 <span className='ml-3'>Play</span>
                             </button>
-                            <button className='ml-3 bg-gray-500/50 p-3 text-white rounded-md py-2 px-6 font-semibold flex items-center'>
+                            <button onClick={() => showModal(movieId, type)} className='ml-3 bg-gray-500/50 p-3 text-white rounded-md py-2 px-6 font-semibold flex items-center'>
                                 <AiOutlineInfoCircle/>
                                 <span className='ml-3'>More Info</span>
                             </button>

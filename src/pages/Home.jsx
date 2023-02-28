@@ -39,7 +39,7 @@ const MainObject = [
     logoImage : './NetflixbyNathan/images/PeakyBlinders.png', 
     videosUrl: './NetflixbyNathan/videos/PeakyBlinders.mp4',
     api: request.requestTvById,
-    type: 'netflixSeries'
+    type: 'tv'
   }
 ]
 

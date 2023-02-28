@@ -12,11 +12,24 @@ import TvShowsPage from './pages/TvShowsPage';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { MyList } from './pages/MyList';
 import { ProtectedRoute2 } from './components/ProtectedRoute2';
+import { ModalDetail } from './components/ModalDetail';
+import { useState } from 'react';
+import ModalContext from './context/ModalContext';
 
 function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalId, setModalId] = useState(null);
+  const [modalType, setModalType] = useState(null);
+
+  const showModal = (id, type) => {
+    setIsModalVisible(true);
+    setModalId(id);
+    setModalType(type);
+  };
   return (
-    <div className="App">
+    <div className='App'>
       <AuthContextProvider>
+      <ModalContext.Provider value={{ showModal }}>
       <Navbar/>
       <Routes>
         <Route path='/NetflixbyNathan' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
@@ -28,7 +41,9 @@ function App() {
         <Route path='/tvshows' element={<ProtectedRoute><TvShowsPage/></ProtectedRoute>}/> 
         <Route path='/mylist' element={<ProtectedRoute><MyList/></ProtectedRoute>}/> 
 
-      </Routes>
+      </Routes> 
+      {isModalVisible && <ModalDetail id={modalId} type={modalType} onClose={() => setIsModalVisible(false)} />}
+      </ModalContext.Provider>
       </AuthContextProvider>
     </div>
   );
