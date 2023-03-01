@@ -44,32 +44,34 @@ const Navbar = (props) => {
     {user ? 
           <div id="navMain" className={`${!props.isModalVisible && 'fixed'} flex  items-center justify-between md:px-[50px] py-4 z-40 w-full ${isScrolled ? 'bg-black' : 'bg-gradient-to-b from-black to-transparent'}`}>
               <div className='flex'>
+                {/* burger menu if width small */}
                 <div className='md:hidden flex text-white items-center justify-center dropdown'>
                   <a className=' mx-4 '>
                     <TbMenu2 className='burger'/>
                   </a>
-                  <div className='menuBurger'>
-                      <a className='triBurger'/>
-                      <div className='text-white px-2 flex text-start'>
-                        <Link to={process.env.PUBLIC_URL +'/Home'}>
-                          Home
-                        </Link>
-                      </div>
-                      <div className='text-white px-2 flex text-start'>
-                        <Link to={process.env.PUBLIC_URL +'/tvshows'}>
-                          Tv Shows
-                        </Link>
-                      </div>
-                      <div className='text-white px-2 flex text-start'>
-                        <Link to={process.env.PUBLIC_URL +'/movies'}>
-                          Movies
-                        </Link>
-                      </div>
-                      <div className='text-white px-2 flex text-start'>
-                        <Link to={process.env.PUBLIC_URL +'/mylist'}>
-                          My List
-                        </Link>
-                      </div>
+                  <div className='menu left-0'>
+                      {/* triangle */}
+                      <div className='triangle ml-[15px]'/>
+                      <Link to={process.env.PUBLIC_URL +'/Home'}>
+                        <div className='text-white flex text-start p-3 bg-black'>
+                            Home
+                        </div>
+                      </Link>
+                      <Link to={process.env.PUBLIC_URL +'/tvshows'}>
+                        <div className='text-white flex text-start p-3 bg-black'>
+                            Tv Shows
+                        </div>
+                      </Link>
+                      <Link to={process.env.PUBLIC_URL +'/movies'}>
+                        <div className='text-white flex text-start p-3 bg-black'>
+                            Movies
+                        </div>
+                      </Link>
+                      <Link to={process.env.PUBLIC_URL +'/mylist'}>
+                        <div className='text-white flex text-start p-3 bg-black'>
+                            My List
+                        </div>
+                      </Link>
                   </div>
                 </div>
                 <Link to={process.env.PUBLIC_URL +'/Home'} className='pr-5'> 
@@ -100,16 +102,61 @@ const Navbar = (props) => {
                       </Link>
                   </div>
                 </div>
-                
               </div>
             
               <div className='text-white flex items-center'>
+                  {/* search bar */}
                   <SearchBar/>
-                  <div className='px-2 cursor-pointer'>
+
+                  {/* notification*/}
+                  <div className='px-2 cursor-pointer dropdown'>
                     <a>
                       <RiNotification2Line className='text-lg'/>
                     </a>
+                    <div className='menu w-[500px]'>
+                      {/* triangle */}
+                      <div className='triangle absolute right-3'/>
+
+                      <Link>
+                        <div className='flex flex-row items-center gap-2 p-3 border-t-[0.05px] border-gray-400 opacity-70 hover:opacity-90'>
+                            <div className='text-gray-500 text-xl w-[130px] h-[70px] bg-white rounded-md'>
+
+                            </div>
+                            <div className='flex flex-col flex-wrap text-start pl-3 w-[280px]'>
+                                <div className='text-white'>
+                                    Netflix Lookahead
+                                    <br/> Explore what's coming soon
+                                </div>
+                                <div className='text-xs text-gray-500 py-1'>
+                                    5 days ago
+                                </div>
+                            </div>
+                        </div>
+                      </Link>   
+
+                      <Link>
+                        <div className='flex flex-row items-center gap-2 p-3 border-t-[0.05px] border-gray-400 opacity-70 hover:opacity-90'>
+                            <div className='text-gray-500 text-xl w-[130px] h-[70px] bg-white rounded-md'>
+
+                            </div>
+                            <div className='flex flex-col flex-wrap text-start pl-3 w-[280px]'>
+                                <div className='text-white'>
+                                    Netflix Lookahead
+                                    <br/> Explore what's coming soon
+                                </div>
+                                <div className='text-xs text-gray-500 py-1'>
+                                    5 days ago
+                                </div>
+                            </div>
+                        </div>
+                      </Link>   
+
+                      
+                    </div>
+                    
                   </div>
+
+                  {/* user dropdown */}
                   <div className='dropdown px-2'>
                     <a>
                       <div className='flex items-center'>
@@ -120,9 +167,10 @@ const Navbar = (props) => {
                       </div>
                     </a>
                     <div className='menu'>
-                      <div className='tri'/>
-                      <a href=''>
-                        <div className='flex flex-row items-center gap-2'>
+                      {/* triangle */}
+                      <div className='triangle ml-[78%]'/>
+                      <Link>
+                        <div className='flex flex-row items-center gap-2 p-3 bg-black'>
                             <div className='text-gray-500 text-xl'>
                               <RiPencilFill/> 
                             </div>
@@ -130,9 +178,9 @@ const Navbar = (props) => {
                               Manage Profiles
                             </div>
                         </div>
-                      </a>  
-                      <a href=''>
-                        <div className='flex flex-row items-center gap-2'>
+                      </Link>  
+                      <Link>
+                        <div className='flex flex-row items-center gap-2 p-3 bg-black'>
                             <div className='text-gray-500 text-xl'>
                               <RiFolderTransferLine/> 
                             </div>
@@ -140,9 +188,9 @@ const Navbar = (props) => {
                               Transfer Profiles
                             </div>
                         </div>
-                      </a>  
-                      <a href=''>
-                        <div className='flex flex-row items-center gap-2'>
+                      </Link>  
+                      <Link>
+                        <div className='flex flex-row items-center gap-2 p-3 bg-black'>
                             <div className='text-gray-500 text-xl'>
                               <RiAccountCircleLine/> 
                             </div>
@@ -150,9 +198,9 @@ const Navbar = (props) => {
                               Account
                             </div>
                         </div>
-                      </a>  
-                      <a href=''>
-                        <div className='flex flex-row items-center gap-2'>
+                      </Link>  
+                      <Link>
+                        <div className='flex flex-row items-center gap-2 p-3 bg-black'>
                             <div className='text-gray-500 text-xl'>
                               <TbHelp/> 
                             </div>
@@ -160,9 +208,9 @@ const Navbar = (props) => {
                               Help Center
                             </div>
                         </div>
-                      </a>  
+                      </Link>  
 
-                      <a onClick={handleLogOut} className=' border-t-[0.05px] border-gray-400'>
+                      <a onClick={handleLogOut} className=' border-t-[0.05px] border-gray-400 p-3'>
                         <div className='text-sm hover:underline underline-offset-1'>
                           Sign out of Netflix
                         </div>
@@ -174,7 +222,7 @@ const Navbar = (props) => {
         :
         <div id="navMain" className='flex fixed items-center justify-start px-[50px] py-4 z-40 w-full from-black to-transparent'>
             <div className='flex'>
-              <Link to='/Home' className='pr-5'> 
+              <Link to={process.env.PUBLIC_URL +'/Home'} className='pr-5'> 
                 <img  className='h-8' src={process.env.PUBLIC_URL + "/images/Logo.png"}/>
               </Link>
       

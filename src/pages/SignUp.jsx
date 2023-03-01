@@ -30,7 +30,7 @@ export const SignUp = () => {
     {
         try {
             await signUp(email,password);
-            navigate('/Home');
+            navigate(process.env.PUBLIC_URL + '/Home');
         } catch (error) {
             setError(error.message)
         }
@@ -109,7 +109,7 @@ const checkPassFunction = (input) => {
                             </div>
                             <div className='flex justify-start mt-12'>
                                 <p className='text-gray-400 mr-1'>New to Netflix?</p>
-                                <Link to='/Login'>
+                                <Link to={process.env.PUBLIC_URL + '/Login'}>
                                     <p className='text-white'>Sign In Now</p>
                                 </Link>
                             </div>

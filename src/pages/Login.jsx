@@ -31,7 +31,7 @@ export const Login = () => {
         {
             try {
                 await signIn(email,password)
-                navigate('/Home')
+                navigate( process.env.PUBLIC_URL + '/Home')
             } catch (error) {
                 setError(error.message)
             }
@@ -111,7 +111,7 @@ export const Login = () => {
                             </div>
                             <div className='flex justify-start mt-12'>
                                 <p className='text-gray-400 mr-1'>New to Netflix?</p>
-                                <Link to='/SignUp'>
+                                <Link to={process.env.PUBLIC_URL + '/SignUp'}>
                                     <p className='text-white'>Sign Up Now</p>
                                 </Link>
                             </div>
