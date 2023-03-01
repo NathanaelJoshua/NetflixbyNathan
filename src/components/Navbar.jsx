@@ -17,7 +17,7 @@ const Navbar = (props) => {
   const handleLogOut = async () => {
     try {
       await logOut();
-      navigate('/login');
+      navigate(process.env.PUBLIC_URL + '/login');
     } catch (error) {
       console.log(error);
     }

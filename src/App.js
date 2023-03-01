@@ -39,7 +39,8 @@ function App() {
       <ModalContext.Provider value={{ showModal }}>
       <Navbar isModalVisible={isModalVisible}/>
       <Routes>
-        <Route path={process.env.PUBLIC_URL + '/Home'} element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+        <Route exact path={process.env.PUBLIC_URL + '/Home'} element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+        <Route exact path={process.env.PUBLIC_URL + '/'} element={<ProtectedRoute><Home/></ProtectedRoute>}/>
         <Route path={process.env.PUBLIC_URL + '/login'} element={<ProtectedRoute2><Login/></ProtectedRoute2>}/>
         <Route path={process.env.PUBLIC_URL + '/signup'} element={<ProtectedRoute2><SignUp/></ProtectedRoute2>}/>
         <Route path={process.env.PUBLIC_URL + '/account'} element={<ProtectedRoute><Account/></ProtectedRoute>}/> 
