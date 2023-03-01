@@ -34,7 +34,7 @@ const Row = [
 const MainObject = [
   {
     id:271110,
-    logoImage : './NetflixbyNathan/images/CaptainAmerica3Logo.png', 
+    logoImage : '/images/CaptainAmerica3Logo.png', 
     api: request.requestMovieById,
     type: 'movie'
   }

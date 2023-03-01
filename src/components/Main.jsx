@@ -75,10 +75,10 @@ export const Main = (props) => {
                         :<div className=' duration-1000'/>}
                         
                         <div className=' lg:w-[80%] md:w-[85%] xs:w-[90%] mb-5 duration-500'>
-                            {type === 'tv' ? 
-                            <img  className='h-10' src="./NetflixbyNathan/images/NetflixSeries.png" alt="NetflixSeriesLogo"/>
-                            : <div></div> }
-                            <img  className='w-[500px]' src={LogoImage} alt={movie.title}/>
+                            {type === 'tv' && 
+                                <img  className='h-10' src={process.env.PUBLIC_URL + "/images/NetflixSeries.png"} alt="NetflixSeriesLogo"/>
+                            }
+                            <img  className='w-[500px]' src={process.env.PUBLIC_URL + LogoImage} alt={movie.title}/>
                         </div>
                         
                         {onMovieHover === 0 ? 

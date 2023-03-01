@@ -166,7 +166,7 @@ export const MovieHover = (props) => {
     }
 
     const openModalHandler = () => {
-        props.closeHover();
+        props.openModal();
         showModal(id, type);
     }
 

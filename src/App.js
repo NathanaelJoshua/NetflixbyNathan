@@ -14,7 +14,7 @@ import { MyList } from './pages/MyList';
 import { ProtectedRoute2 } from './components/ProtectedRoute2';
 import { ModalDetail } from './components/ModalDetail';
 import { useState } from 'react';
-import ModalContext from './context/ModalContext';
+import  ModalContext  from './context/ModalContext';
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -32,20 +32,21 @@ function App() {
     setIsModalVisible(false)
     document.body.style.overflow = 'auto';
   }
+  
   return (
     <div className='App'>
       <AuthContextProvider>
       <ModalContext.Provider value={{ showModal }}>
       <Navbar isModalVisible={isModalVisible}/>
       <Routes>
-        <Route path='/Home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
-        <Route path='/login' element={<ProtectedRoute2><Login/></ProtectedRoute2>}/>
-        <Route path='/signup' element={<ProtectedRoute2><SignUp/></ProtectedRoute2>}/>
-        <Route path='/account' element={<ProtectedRoute><Account/></ProtectedRoute>}/> 
-        <Route path='/search' element={<ProtectedRoute><Search/></ProtectedRoute>}/> 
-        <Route path='/movies' element={<ProtectedRoute><MoviesPage/></ProtectedRoute>}/> 
-        <Route path='/tvshows' element={<ProtectedRoute><TvShowsPage/></ProtectedRoute>}/> 
-        <Route path='/mylist' element={<ProtectedRoute><MyList/></ProtectedRoute>}/> 
+        <Route path={process.env.PUBLIC_URL + '/Home'} element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+        <Route path={process.env.PUBLIC_URL + '/login'} element={<ProtectedRoute2><Login/></ProtectedRoute2>}/>
+        <Route path={process.env.PUBLIC_URL + '/signup'} element={<ProtectedRoute2><SignUp/></ProtectedRoute2>}/>
+        <Route path={process.env.PUBLIC_URL + '/account'} element={<ProtectedRoute><Account/></ProtectedRoute>}/> 
+        <Route path={process.env.PUBLIC_URL + '/search'} element={<ProtectedRoute><Search/></ProtectedRoute>}/> 
+        <Route path={process.env.PUBLIC_URL + '/movies'} element={<ProtectedRoute><MoviesPage/></ProtectedRoute>}/> 
+        <Route path={process.env.PUBLIC_URL + '/tvshows'} element={<ProtectedRoute><TvShowsPage/></ProtectedRoute>}/> 
+        <Route path={process.env.PUBLIC_URL + '/mylist'} element={<ProtectedRoute><MyList/></ProtectedRoute>}/> 
 
       </Routes> 
       {isModalVisible && <ModalDetail id={modalId} type={modalType} onClose={closeModal } />}

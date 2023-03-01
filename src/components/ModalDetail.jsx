@@ -25,6 +25,7 @@ export const ModalDetail = (props) => {
     const [isSimilarMovieExpand, setSimilarMovieExpand] = useState(false);
     const [show, setShow] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [animation, startAnimation] = useState(false);
     const scrollRef = useRef(null);
 
     // item parameter
@@ -132,11 +133,19 @@ export const ModalDetail = (props) => {
         const handleMoviePlay = () => {
             setTimeout(()=>{
                 setMoviePlay(true)
+            },3000)
+
+            setTimeout(()=>{
+                startAnimation(true)
             },2000)
 
             setTimeout(()=>{
                 setMoviePlay(false)
-            },32000)
+            },22000)
+            
+            setTimeout(()=>{
+                startAnimation(false)
+            },23000)
         }
         
         // random age
@@ -269,10 +278,8 @@ export const ModalDetail = (props) => {
                 </div>
                 <div className='w-full h-full bg-[#141414] overflow-hidden'>
                     {moviePlay ?
-                    
-                    <Trailer movieId={id} width={'200%'} type={type} height={'200%'} muted={!isSoundOn}/> : 
-                    <img className={!moviePlay ? 'w-full h-full object-cover opacity-100 transition duration-500': 'w-full h-[500px]object-cover opacity-0 transition duration-500 z-0'} src={`https://image.tmdb.org/t/p/original/${image}`} alt={title}/>
-                    
+                        <Trailer movieId={id} width={'200%'} type={type} height={'200%'} muted={!isSoundOn}/> : 
+                        <img className={`w-full h-full object-cover transition duration-500 ${!animation ? 'opacity-100' : 'opacity-0'}`} src={`https://image.tmdb.org/t/p/original/${image}`} alt={title}/>
                     }
                 </div>
             </div>

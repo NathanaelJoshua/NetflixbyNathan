@@ -17,7 +17,7 @@ const navigate = useNavigate();
 
   useEffect(() =>{
     if(searchResult){
-      const searchUrl = '/Search?q=';
+      const searchUrl = process.env.PUBLIC_URL + '/Search?q=';
       navigate(searchUrl + searchResult);
     }
   },[searchResult]); 
@@ -44,7 +44,7 @@ const navigate = useNavigate();
     setIsActive(false);
     setSearchResult('');
     setSearchValue('');
-    navigate('/NetflixbyNathan');
+    navigate(process.env.PUBLIC_URL +'/Home');
   }
 
   const handleBlur = event => {

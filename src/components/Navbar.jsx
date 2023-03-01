@@ -51,51 +51,51 @@ const Navbar = (props) => {
                   <div className='menuBurger'>
                       <a className='triBurger'/>
                       <div className='text-white px-2 flex text-start'>
-                        <Link to='/Home'>
+                        <Link to={process.env.PUBLIC_URL +'/Home'}>
                           Home
                         </Link>
                       </div>
                       <div className='text-white px-2 flex text-start'>
-                        <Link to='/tvshows'>
+                        <Link to={process.env.PUBLIC_URL +'/tvshows'}>
                           Tv Shows
                         </Link>
                       </div>
                       <div className='text-white px-2 flex text-start'>
-                        <Link to='/movies'>
+                        <Link to={process.env.PUBLIC_URL +'/movies'}>
                           Movies
                         </Link>
                       </div>
                       <div className='text-white px-2 flex text-start'>
-                        <Link to='/mylist'>
+                        <Link to={process.env.PUBLIC_URL +'/mylist'}>
                           My List
                         </Link>
                       </div>
                   </div>
                 </div>
-                <Link to='/Home' className='pr-5'> 
-                  <img  className='h-8' src="./NetflixbyNathan/images/Logo.png"/>
+                <Link to={process.env.PUBLIC_URL +'/Home'} className='pr-5'> 
+                  <img  className='h-8' src={process.env.PUBLIC_URL + "/images/Logo.png"}/>
                 </Link>
                 <div className='md:flex hidden'>
                   <div className='text-white px-5'>
-                      <Link to='/Home'>
+                      <Link to={process.env.PUBLIC_URL + '/Home'}>
                         Home
                       </Link>
                   </div>
 
                   <div className='text-white px-5'>
-                      <Link to='/tvshows'>
+                      <Link to={process.env.PUBLIC_URL +'/tvshows'}>
                         TV Shows
                       </Link>
                   </div>
 
                   <div className='text-white px-5'>
-                      <Link to='/movies'>
+                      <Link to={process.env.PUBLIC_URL +'/movies'}>
                         Movies
                       </Link>
                   </div>
 
                   <div className='text-white px-5'>
-                      <Link to='/mylist'>
+                      <Link to={process.env.PUBLIC_URL +'/mylist'}>
                         My List
                       </Link>
                   </div>
@@ -114,7 +114,7 @@ const Navbar = (props) => {
                     <a>
                       <div className='flex items-center'>
                         <div className='bg-slate-400 w-8 h-8 mx-1 rounded-md'>
-                            <img  className='rounded-md w-full h-full' src="./NetflixbyNathan/images/MoneyHeistpp.png"/>
+                            <img  className='rounded-md w-full h-full' src={process.env.PUBLIC_URL + "/images/MoneyHeistpp.png"}/>
                         </div>
                         <IoMdArrowDropdown className='arrow'/>
                       </div>
@@ -175,7 +175,7 @@ const Navbar = (props) => {
         <div id="navMain" className='flex fixed items-center justify-start px-[50px] py-4 z-40 w-full from-black to-transparent'>
             <div className='flex'>
               <Link to='/Home' className='pr-5'> 
-                <img  className='h-8' src="./NetflixbyNathan/images/Logo.png"/>
+                <img  className='h-8' src={process.env.PUBLIC_URL + "/images/Logo.png"}/>
               </Link>
       
             </div>
