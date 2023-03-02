@@ -24,6 +24,7 @@ export const MovieHover = (props) => {
     const movieId = doc(db, 'users', `${user?.email}`);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [runtime, setRunTime] = useState();
+    const [bottom, setBottom] = useState('-50%')
     
     // item property
     
@@ -54,18 +55,22 @@ export const MovieHover = (props) => {
 
     useEffect(() =>{
         const setMultiplier = () =>{
-            let style = '';
             if(windowWidth<=640){
                 setMulti(2)
+                setBottom(-50*2 + '%')
+                
             }
             else if(windowWidth<=768){
                 setMulti(1.8)
+                setBottom(-50*1.8 + '%')
             }
             else if(windowWidth<=1024){
                 setMulti(1.6)
+                setBottom(-50*1.6 + '%')
             }
             else {
                 setMulti(1.4);
+                setBottom(-50*1 + '%')
             }
             }
         
@@ -77,30 +82,30 @@ export const MovieHover = (props) => {
         let style = '';
         if(props.searchKey){
             if((index+movieCount)%movieCount === 0){
-                style = 'absolute bottom-[-70%] left-0 z-10';
+                style = 'absolute left-0 z-10';
                 setHoverStyle(style);
             }
             else if (index%movieCount === movieCount-1) {
-                style = 'absolute bottom-[-70%] right-0 z-10 ';
+                style = 'absolute right-0 z-10 ';
                 setHoverStyle(style);
             }
             else {
-                style = ' absolute bottom-[-70%] z-50 ';
+                style = ' absolute z-50 ';
                 style += setLeft(multi);
                 setHoverStyle(style);
             }
         }
         else {
             if (index === currentIndex) {
-                style = 'absolute bottom-[-70%] left-0 z-50';
+                style = 'absolute  my-auto left-0 z-50';
                 setHoverStyle(style);
             } 
             else if (index === (currentIndex + movieCount - 1)) {
-                style = 'absolute bottom-[-70%] right-0 z-50';
+                style = 'absolute right-0 z-50';
                 setHoverStyle(style);
             }
             else {
-                style = 'absolute bottom-[-70%] z-50 ';
+                style = 'absolute z-50 ';
                 style += setLeft(multi);
                 setHoverStyle(style);
             }
@@ -241,7 +246,7 @@ export const MovieHover = (props) => {
     }
     return (
         <div>
-            <div className={hoverStyle}>
+            <div className={hoverStyle} style={{bottom: `${bottom}`}}>
                 <div className={delay ? 'duration-500 transition scale-100' : 'scale-0 duration-300 transition' } style={{width: movieWidth}}>
                     <div className='bg-black' style={{width: movieWidth}}>
                         {anim ? <img className='object-cover cursor-pointer rounded-sm ' style={{width: movieWidth}} src={`https://image.tmdb.org/t/p/original/${image}`} alt={title}/>
