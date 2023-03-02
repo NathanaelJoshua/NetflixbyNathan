@@ -161,7 +161,7 @@ const Navbar = (props) => {
                     <a>
                       <div className='flex items-center'>
                         <div className='bg-slate-400 w-8 h-8 mx-1 rounded-md'>
-                            <img  className='rounded-md w-full h-full' src={process.env.PUBLIC_URL + "/images/MoneyHeistpp.png"}/>
+                            <img  className='rounded-md w-full h-full' src={process.env.PUBLIC_URL + "/images/MoneyHeistPP.png"}/>
                         </div>
                         <IoMdArrowDropdown className='arrow'/>
                       </div>
