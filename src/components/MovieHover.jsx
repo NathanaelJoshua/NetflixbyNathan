@@ -24,7 +24,7 @@ export const MovieHover = (props) => {
     const movieId = doc(db, 'users', `${user?.email}`);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [runtime, setRunTime] = useState();
-    const [bottom, setBottom] = useState('-50%')
+    const [bottom, setBottom] = useState('-50%');
     
     // item property
     
@@ -41,6 +41,7 @@ export const MovieHover = (props) => {
 
     //modal context
     const { showModal } = useContext(ModalContext);
+
 
     useEffect(() => {
         const handleWindowResize = () => {
@@ -222,6 +223,7 @@ export const MovieHover = (props) => {
         }
 
         apiItem = editApi(apiItem,type,id);
+
         getItemData();
         transition();   
         handlerAnim();

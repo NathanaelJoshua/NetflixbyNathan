@@ -7,7 +7,6 @@ import './Movies.css'
 export const Movies = (props) => {
   //UI
   const [onMovieHover, setHover] = useState(0);
-  const [disabledHover, setDisabledHover] = useState(false);
   const [isLoading, setLoading] = useState(true);
 
   const id = props.movie.id;
@@ -17,6 +16,9 @@ export const Movies = (props) => {
   const movieWidth = props.width;
   const type = props.type;    
   let title = props.movie.title;
+  const crntIndx = props.crntIndx;
+  const movieCount = props.movieCount;
+  const index = props.index;
 
   const changeTypeUrl = () =>{
     api = api.replace('typeId', type);
@@ -35,12 +37,12 @@ export const Movies = (props) => {
   }
 
   useEffect(() =>{
-    changeTypeUrl();
-    const getData = async () => {
-        await axios.get(api).then((response)=>{
-            setGenre(response.data);
-        });
-    };
+      changeTypeUrl();
+      const getData = async () => {
+          await axios.get(api).then((response)=>{
+              setGenre(response.data);
+          });
+      };
       
       getData();
       setLoading(false);
@@ -52,11 +54,11 @@ export const Movies = (props) => {
   }
   return (
     <div className='inline-block opacity-100 z-0 transition-all duration-500' style={{width: movieWidth}}>
-      <div className='pr-1 relative' style={{width: movieWidth}} onMouseLeave={onLeaveHandler} onMouseEnter={!disabledHover && onHoverHandler}>
+      <div className='pr-1 relative' style={{width: movieWidth}} onMouseLeave={onLeaveHandler} onMouseEnter={onHoverHandler}>
         <img className='object-cover cursor-pointer rounded-sm' style={{width: movieWidth}} src={`https://image.tmdb.org/t/p/original/${image}`} alt={title}/>
         {onMovieHover === 1 ? 
           <MovieHover genre={genre} movie={props.movie} width={movieWidth} type={type} searchKey={props.searchKey} 
-          index={props.index} movieCount={props.movieCount} crntIndx={props.crntIndx} openModal={onOpenModalHandler}/>
+          index={index} movieCount={movieCount} crntIndx={crntIndx} openModal={onOpenModalHandler}/>
           :
           <div/>  
         }

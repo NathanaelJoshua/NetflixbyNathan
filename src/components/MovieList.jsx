@@ -117,11 +117,11 @@ export const MovieList = (props) => {
     return <div ></div>;
   }
   return (
-    <div className='pb-[40px]'>
+    <div className='pb-[40px] group'>
         <div className='py-2 flex text-start ml-[50px]'>
             <span className='text-white font-bold text-xl'>{title}</span>
         </div>
-        <div className='flex items-center overflow-x-clip group relative'>
+        <div className='flex items-center overflow-x-clip  relative'>
             {currentIndex !== 0 ?
             <MdChevronLeft onClick={slideLeft}  className='text-white bg-black opacity-50 absolute text-xl h-full z-10 cursor-pointer hidden group-hover:block' size={50}/>
             :''
