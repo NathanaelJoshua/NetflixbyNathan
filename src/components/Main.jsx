@@ -16,8 +16,12 @@ export const Main = (props) => {
     const movieId = props.id;
     const type = props.type;
     let api = props.api;
+
+    // UI status
+    const [moviePlay, setMoviePlay] = useState(false);
     const [movie, setOneMovies] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const [animation, startAnimation] = useState(false);
     const [onMovieHover, setHover] = useState(0);
     const [isSoundOn, setSound] = useState(true);
 
@@ -28,12 +32,32 @@ export const Main = (props) => {
     const getData = async () => {
         await axios.get(api).then((response)=>{
             setOneMovies(response.data);
-            setLoading(false);
         });
     };
     useEffect(() =>{
+        const handleMoviePlay = () => {
+            setTimeout(()=>{
+                setMoviePlay(true)
+            },3000)
+
+            setTimeout(()=>{
+                startAnimation(true)
+            },2000)
+
+            setTimeout(()=>{
+                setMoviePlay(false)
+            },22000)
+            
+            setTimeout(()=>{
+                startAnimation(false)
+            },23000)
+        }
         setMovieId();
         getData();
+        
+        setLoading(false);
+        
+        handleMoviePlay();
     },[api]);
 
     const SoundHandler = () => {
@@ -114,8 +138,9 @@ export const Main = (props) => {
                     </div>
                 </div>
                 <div className='w-full h-full overflow-hidden'>
-                {onMovieHover === 0 ? 
-                    <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title}/>
+            
+                {!moviePlay  ? 
+                    <img className={`w-full h-full object-cover transition duration-500 ${!animation ? 'opacity-100' : 'opacity-0'}`} src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title}/>
                     
                     : 
                     <Trailer movieId={movieId} width={'200%'} type={type} height={'200%'} muted={!isSoundOn}/> }
