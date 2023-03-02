@@ -38,16 +38,16 @@ function App() {
       <AuthContextProvider>
       <ModalContext.Provider value={{ showModal }}>
       <Navbar isModalVisible={isModalVisible}/>
-      <Routes>
-        <Route exact path={process.env.PUBLIC_URL + '/Home'} element={<ProtectedRoute><Home/></ProtectedRoute>}/>
-        <Route exact path={process.env.PUBLIC_URL + '/'} element={<ProtectedRoute><Home/></ProtectedRoute>}/>
-        <Route path={process.env.PUBLIC_URL + '/login'} element={<ProtectedRoute2><Login/></ProtectedRoute2>}/>
-        <Route path={process.env.PUBLIC_URL + '/signup'} element={<ProtectedRoute2><SignUp/></ProtectedRoute2>}/>
-        <Route path={process.env.PUBLIC_URL + '/account'} element={<ProtectedRoute><Account/></ProtectedRoute>}/> 
-        <Route path={process.env.PUBLIC_URL + '/search'} element={<ProtectedRoute><Search/></ProtectedRoute>}/> 
-        <Route path={process.env.PUBLIC_URL + '/movies'} element={<ProtectedRoute><MoviesPage/></ProtectedRoute>}/> 
-        <Route path={process.env.PUBLIC_URL + '/tvshows'} element={<ProtectedRoute><TvShowsPage/></ProtectedRoute>}/> 
-        <Route path={process.env.PUBLIC_URL + '/mylist'} element={<ProtectedRoute><MyList/></ProtectedRoute>}/> 
+      <Routes basename='/index.html'>
+        <Route exact path={'/Home'} element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+        <Route exact path={'/'} element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+        <Route path={'/login'} element={<ProtectedRoute2><Login/></ProtectedRoute2>}/>
+        <Route path={ '/signup'} element={<ProtectedRoute2><SignUp/></ProtectedRoute2>}/>
+        <Route path={ '/account'} element={<ProtectedRoute><Account/></ProtectedRoute>}/> 
+        <Route path={ '/search'} element={<ProtectedRoute><Search/></ProtectedRoute>}/> 
+        <Route path={ '/movies'} element={<ProtectedRoute><MoviesPage/></ProtectedRoute>}/> 
+        <Route path={ '/tvshows'} element={<ProtectedRoute><TvShowsPage/></ProtectedRoute>}/> 
+        <Route path={ '/mylist'} element={<ProtectedRoute><MyList/></ProtectedRoute>}/> 
 
       </Routes> 
       {isModalVisible && <ModalDetail id={modalId} type={modalType} onClose={closeModal } />}

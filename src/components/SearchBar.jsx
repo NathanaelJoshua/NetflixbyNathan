@@ -17,7 +17,7 @@ const navigate = useNavigate();
 
   useEffect(() =>{
     if(searchResult){
-      const searchUrl = process.env.PUBLIC_URL + '/Search?q=';
+      const searchUrl = '/Search?q=';
       navigate(searchUrl + searchResult);
     }
   },[searchResult]); 
@@ -44,7 +44,7 @@ const navigate = useNavigate();
     setIsActive(false);
     setSearchResult('');
     setSearchValue('');
-    navigate(process.env.PUBLIC_URL +'/Home');
+    navigate('/Home');
   }
 
   const handleBlur = event => {

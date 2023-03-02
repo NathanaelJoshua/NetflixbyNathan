@@ -17,7 +17,7 @@ const Navbar = (props) => {
   const handleLogOut = async () => {
     try {
       await logOut();
-      navigate(process.env.PUBLIC_URL + '/login');
+      navigate('/login');
     } catch (error) {
       console.log(error);
     }
@@ -52,52 +52,52 @@ const Navbar = (props) => {
                   <div className='menu left-0'>
                       {/* triangle */}
                       <div className='triangle ml-[15px]'/>
-                      <Link to={process.env.PUBLIC_URL +'/Home'}>
+                      <Link to={'/Home'}>
                         <div className='text-white flex text-start p-3 bg-black'>
                             Home
                         </div>
                       </Link>
-                      <Link to={process.env.PUBLIC_URL +'/tvshows'}>
+                      <Link to={'/tvshows'}>
                         <div className='text-white flex text-start p-3 bg-black'>
                             Tv Shows
                         </div>
                       </Link>
-                      <Link to={process.env.PUBLIC_URL +'/movies'}>
+                      <Link to={'/movies'}>
                         <div className='text-white flex text-start p-3 bg-black'>
                             Movies
                         </div>
                       </Link>
-                      <Link to={process.env.PUBLIC_URL +'/mylist'}>
+                      <Link to={'/mylist'}>
                         <div className='text-white flex text-start p-3 bg-black'>
                             My List
                         </div>
                       </Link>
                   </div>
                 </div>
-                <Link to={process.env.PUBLIC_URL +'/Home'} className='pr-5'> 
+                <Link to={'/Home'} className='pr-5'> 
                   <img  className='h-8' src={process.env.PUBLIC_URL + "/images/Logo.png"}/>
                 </Link>
                 <div className='md:flex hidden'>
                   <div className='text-white px-5'>
-                      <Link to={process.env.PUBLIC_URL + '/Home'}>
+                      <Link to={'/Home'}>
                         Home
                       </Link>
                   </div>
 
                   <div className='text-white px-5'>
-                      <Link to={process.env.PUBLIC_URL +'/tvshows'}>
+                      <Link to={'/tvshows'}>
                         TV Shows
                       </Link>
                   </div>
 
                   <div className='text-white px-5'>
-                      <Link to={process.env.PUBLIC_URL +'/movies'}>
+                      <Link to={'/movies'}>
                         Movies
                       </Link>
                   </div>
 
                   <div className='text-white px-5'>
-                      <Link to={process.env.PUBLIC_URL +'/mylist'}>
+                      <Link to={'/mylist'}>
                         My List
                       </Link>
                   </div>
@@ -222,7 +222,7 @@ const Navbar = (props) => {
         :
         <div id="navMain" className='flex fixed items-center justify-start px-[50px] py-4 z-40 w-full from-black to-transparent'>
             <div className='flex'>
-              <Link to={process.env.PUBLIC_URL +'/Home'} className='pr-5'> 
+              <Link to={'/Home'} className='pr-5'> 
                 <img  className='h-8' src={process.env.PUBLIC_URL + "/images/Logo.png"}/>
               </Link>
       
