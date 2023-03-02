@@ -186,7 +186,7 @@ export const SimilarMovies = (props) => {
                 </div>
             </div>
 
-            <div className='text-white text-start py-2 text-sm'>
+            <div className='text-white text-start py-2 sm:text-sm text-xs min-h-[150px] max-h-max'>
                 {limitText(desc,200)}
             </div>
         </div>

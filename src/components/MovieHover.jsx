@@ -172,7 +172,6 @@ export const MovieHover = (props) => {
     }
 
     const openModalHandler = () => {
-        props.openModal();
         showModal(id, type);
     }
 
