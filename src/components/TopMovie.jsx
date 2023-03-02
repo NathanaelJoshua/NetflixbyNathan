@@ -13,7 +13,7 @@ export const TopMovie = (props) => {
     const image = props.movie.poster_path;
     const top = props.idx + 1;
     const movieWidth = props.width;
-    const imageTop = '../NetflixbyNathan/images/NumberTop/' + top +'.png'
+    const imageTop = './images/NumberTop/' + top +'.png'
     
     
     const changeTypeUrl = () =>{
