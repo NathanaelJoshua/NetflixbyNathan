@@ -82,7 +82,7 @@ if (isLoading) {
       muted={props.muted}
       width={props.width}
       height={props.height}
-      playing={playing}
+      playing={true}
       onReady={handleOnReady}
       url={youtubeUrl}
       config={{ youtube: { playerVars: { disablekb: 1, modestbranding: 0 } } }} />
