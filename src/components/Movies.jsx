@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import ModalContext from '../context/ModalContext';
 import request from '../Request';
 import { MovieHover } from './MovieHover';
 import './Movies.css'
@@ -8,6 +9,10 @@ export const Movies = (props) => {
   //UI
   const [onMovieHover, setHover] = useState(0);
   const [isLoading, setLoading] = useState(true);
+  const [disabledHover, setDisabledHover] = useState(false);
+
+  //modal context
+  const { isModalVisible } = useContext(ModalContext);
 
   const id = props.movie.id;
   const [genre, setGenre] = useState('');
@@ -19,6 +24,16 @@ export const Movies = (props) => {
   const crntIndx = props.crntIndx;
   const movieCount = props.movieCount;
   const index = props.index;
+
+  
+
+  useEffect(()=>{
+      if(isModalVisible){
+          onLeaveHandler();
+          setDisabledHover(true);
+      }
+      else setDisabledHover(false)
+  },[isModalVisible])
 
   const changeTypeUrl = () =>{
     api = api.replace('typeId', type);
@@ -54,7 +69,7 @@ export const Movies = (props) => {
   }
   return (
     <div className='inline-block opacity-100 z-0 transition-all duration-500' style={{width: movieWidth}}>
-      <div className='pr-1 relative' style={{width: movieWidth}} onMouseLeave={onLeaveHandler} onMouseEnter={onHoverHandler}>
+      <div className='pr-1 relative' style={{width: movieWidth}} onMouseLeave={onLeaveHandler} onMouseEnter={!disabledHover && onHoverHandler}>
         <img className='object-cover cursor-pointer rounded-sm' style={{width: movieWidth}} src={`https://image.tmdb.org/t/p/original/${image}`} alt={title}/>
         {onMovieHover === 1 ? 
           <MovieHover genre={genre} movie={props.movie} width={movieWidth} type={type} searchKey={props.searchKey} 

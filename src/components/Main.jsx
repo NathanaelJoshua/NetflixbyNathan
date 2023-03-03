@@ -17,7 +17,7 @@ export const Main = (props) => {
     const [isSoundOn, setSound] = useState(true);
 
     //modal context
-    const { showModal } = useContext(ModalContext);
+    const { isModalVisible, showModal } = useContext(ModalContext);
     const LogoImage = props.logo;
     const movieId = props.id;
     const type = props.type;
@@ -61,6 +61,16 @@ export const Main = (props) => {
         handleMoviePlay();
         
     },[api]);
+
+    useEffect(()=>{
+        if(isModalVisible){
+            setMoviePlay(false)
+            
+            setTimeout(()=>{
+                startAnimation(false)
+            },1000)
+        }
+    },[isModalVisible])
 
     const limitText = (str, num) => {
             if(str.length > num){

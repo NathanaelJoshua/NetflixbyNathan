@@ -36,7 +36,7 @@ function App() {
   return (
     <div className='App'>
       <AuthContextProvider>
-      <ModalContext.Provider value={{ showModal }}>
+      <ModalContext.Provider value={{ showModal, isModalVisible }}>
       <Navbar isModalVisible={isModalVisible}/>
       <Routes basename='/index.html'>
         <Route exact path={'/Home'} element={<ProtectedRoute><Home/></ProtectedRoute>}/>
