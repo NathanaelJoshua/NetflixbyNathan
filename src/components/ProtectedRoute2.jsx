@@ -5,7 +5,7 @@ import { UserAuth } from '../context/AuthContext'
 export const ProtectedRoute2 = ({children}) => {
     const {user} = UserAuth();
   if(user ) {
-    return <Navigate to={process.env.PUBLIC_URL + 'Home'}/>
+    return <Navigate to={ 'Home'}/>
   }
   else return children;
 }
